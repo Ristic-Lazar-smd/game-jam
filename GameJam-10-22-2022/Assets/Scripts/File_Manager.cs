@@ -8,7 +8,7 @@ public class File_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WriteString();
+       // WriteString();
     }
 
     // Update is called once per frame
@@ -16,12 +16,13 @@ public class File_Manager : MonoBehaviour
     {
         
     }
+    /*
     public static void WriteString()
     {
 
         //string path = Application.persistentDataPath + "/test.txt";
         string sors = "C:/Users/Lazar/Desktop" + "/sors.txt";
-        string destination = "C:/Users/Lazar/Desktop" + "/escape.txt";
+        //string destination = "C:/Users/Lazar/Desktop" + "/escape.txt";
 
         StreamReader reader = new StreamReader(sors);
         string text = reader.ReadToEnd();
@@ -44,4 +45,5 @@ public class File_Manager : MonoBehaviour
         Debug.Log(reader.ReadToEnd());
         reader.Close();
     }
+    */
 }
