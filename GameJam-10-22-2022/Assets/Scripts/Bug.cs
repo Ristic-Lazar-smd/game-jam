@@ -14,11 +14,11 @@ public class Bug : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        while(bugSpawn == true)
-        {
-            spawnTime = Random.Range(1, 2);
-            StartCoroutine(ExampleCoroutine());
-        }
+        //while(bugSpawn == true)
+        //{
+        //    spawnTime = Random.Range(1, 2);
+        //    StartCoroutine(ExampleCoroutine());
+        //}
     }
 
     // Update is called once per frame
