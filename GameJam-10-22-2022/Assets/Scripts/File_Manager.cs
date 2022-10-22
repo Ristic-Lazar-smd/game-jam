@@ -20,28 +20,47 @@ public class File_Manager : MonoBehaviour
     {
 
         //string path = Application.persistentDataPath + "/test.txt";
-        string sors = "C:/Users/Lazar/Desktop" + "/sors.txt";
-        string destination = "C:/Users/Lazar/Desktop" + "/escape.txt";
+        //string sors = "C:/Users/Lazar/Desktop" + "/sors.txt";
+        //string destination = "C:/Users/escape" + "/testtt.txt";
+        string path = Path.GetFullPath("./");
+        int pom = 0;
+        string actual_path = "";
+        
 
-        StreamReader reader = new StreamReader(sors);
-        string text = reader.ReadToEnd();
-        reader.Close();
+        char[] main_path = path.ToCharArray();
+        for (int i = 0; i < main_path.Length; i++)
+        {
+            if ((int)main_path[i] == 92)
+            {
+                pom++;
+                if (pom == 2) {
+                    Debug.Log("OVO"+actual_path);
+                    break;
+                }
+                
+                Debug.Log("ovoliko puta smo usli u if sa equals "+ pom);
+            }
+            actual_path = actual_path.Insert(i, main_path[i].ToString());
+            Debug.Log("ovo nije u if" + actual_path);
+        }
+        StreamWriter writer = new StreamWriter(actual_path + "/test.txt", true);
+        writer.WriteLine("tttest");
+        writer.Close();
+
+        //StreamReader reader = new StreamReader(sors);
+        //string text = reader.ReadToEnd();
+        //reader.Close();
 
         //Write some text to the test.txt file
-        StreamWriter writer = new StreamWriter(destination, true);
-        writer.WriteLine(text);
-        writer.Close();
-        
-        //Print the text from the file
-       // Debug.Log(reader.ReadToEnd());
-       // reader.Close();
+
+
     }
-    public static void ReadString()
-    {
-        string path = Application.persistentDataPath + "/test.txt";
-        //Read the text from directly from the test.txt file
-        StreamReader reader = new StreamReader(path);
-        Debug.Log(reader.ReadToEnd());
-        reader.Close();
-    }
+    //public static void ReadString()
+    //{
+    //    string path = Application.persistentDataPath + "/test.txt";
+    //    //Read the text from directly from the test.txt file
+    //    StreamReader reader = new StreamReader(path);
+    //    Debug.Log(reader.ReadToEnd());
+    //    reader.Close();
+    //}
 }
