@@ -25,6 +25,7 @@ public class File_Manager : MonoBehaviour
         string actual_path = "";
         string what_to_write = "";
 
+        /* Uzimam relative fajl path fajla u kome je smestena igrica, uzimam samo prvi "nivo" fajla */
         char[] main_path = path.ToCharArray();
         for (int i = 0; i < main_path.Length; i++)
         {
@@ -37,27 +38,25 @@ public class File_Manager : MonoBehaviour
                     break;
                 }
             }
-            actual_path = actual_path.Insert(i, main_path[i].ToString());
-            
+            actual_path = actual_path.Insert(i, main_path[i].ToString());         
         }
 
 
 
-
-
-        /* Uzima *bad*fajl iz template koji upisuje u base direktori gde ce player da ulazi*/
+        /* Citam los fajl i upisujem contents u what_to_write */
         string bad_path = Path.GetFullPath("./") + "/Template/Bad/roomBad.txt";
         StreamReader reader = new StreamReader(bad_path);
         what_to_write = reader.ReadToEnd();
         reader.Close();
 
+        /* Citam fajl koji player treba da eddituje, sadrzaj fajla pisem u check*/
         string check = "";
         string path_check = base_file_path + "/room.txt";
         StreamReader reader_check = new StreamReader(path_check);
         check = reader_check.ReadToEnd();
         reader_check.Close();
 
-
+        /* Testiram da l je fajl koji player treba da eddituje prazan, ako jeste upisujem ono sto treba da se eddituje*/
         if (check.Length == 0) {
             StreamWriter writer = new StreamWriter(actual_path + "/room.txt", true);
             writer.WriteLine(what_to_write);
@@ -66,19 +65,12 @@ public class File_Manager : MonoBehaviour
       
     }
 
-    public static void ReadString()
-    {
-        //Read the text from directly from the test.txt file
-        string path = base_file_path + "/test.txt";
-        StreamReader reader = new StreamReader(path);
-        reader.Close();
-    }
-
 
     public static void CompareFiles()
     {
         string room_good = "";
         string room_user = "";
+
 
         string path = base_file_path + "/room.txt";
         StreamReader reader = new StreamReader(path);
