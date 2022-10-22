@@ -20,15 +20,16 @@ public class VacuumMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouse = Input.mousePosition;
-        castPoint = Camera.main.ScreenPointToRay(mouse);
-        //I'm not sure if castPoint has a position in it or not, but if when you type castPoint.transform.position
-        direction = (castPoint.- transform.position).normalized;
+        //mouse = Input.mousePosition;
+        //castPoint = Camera.main.ScreenPointToRay(mouse);
+        ////I'm not sure if castPoint has a position in it or not, but if when you type castPoint.transform.position
+        //direction = (castPoint.- transform.position).normalized;
 
-        //create the rotation we need to be in to look at the target
-        lookRotation = Quaternion.LookRotation(direction);
+        ////create the rotation we need to be in to look at the target
+        //lookRotation = Quaternion.LookRotation(direction);
 
-        //rotate us over time according to speed until we are in the required rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotationSpeed);
+        ////rotate us over time according to speed until we are in the required rotation
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotationSpeed);
+    
     }
 }
